@@ -12,6 +12,7 @@ To install Simple Shell, follow these steps:
 git clone https://github.com/yourusername/simple-shell.git
 cd simple-shell
 make
+```
 
 ## Usage
 
@@ -19,6 +20,7 @@ After installation, you can run Simple Shell using the following command:
 
 ```bash
 ./simple_shell
+```
 
 ## Features
 
