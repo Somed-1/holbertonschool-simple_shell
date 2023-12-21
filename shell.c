@@ -9,12 +9,15 @@
 
 char **parse_line(char *command)
 {
-	char **args = malloc(MAX_ARGS * sizeof(char *));
+	char *arg, **args;
+	int i;
+
+	args = malloc(MAX_ARGS * sizeof(char *));
 	if (args == NULL)
 		return(NULL);
 
-	char *arg = strtok(command, DELIMS);
-	int i = 0;
+	arg = strtok(command, DELIMS);
+	i = 0;
 
 	while (arg != NULL && i < MAX_ARGS - 1)
 	{
@@ -30,21 +33,31 @@ char **parse_line(char *command)
 int main(void)
 {
 	char *command = NULL;
+	char **args;
 	size_t len = 0;
 	ssize_t read;
+	int i;
 	pid_t pid;
 
 	while (1)
 	{
-		printf("$ ");
-		read = getline(&command, &len, STDIN_FILENO);
-		if (read == -1)
+
+		if (isatty(STDIN_FILENO))
 		{
-			perror("Error: can't read from stdin\n");
-			return (1);
+			write(STDOUT_FILENO, "#cisfun$ ", 9);
 		}
 
-		char **args = parse_line(command);
+
+		read = getline(&command, &len, stdin);
+
+		if (read == -1)
+		{
+			fflush(stdin);
+			free(command);
+			break;
+		}
+
+		args = parse_line(command);
 
 		if (args != NULL && args[0] != NULL)
 		{
@@ -60,13 +73,15 @@ int main(void)
 				wait(NULL);
 			}
 
-			for (int i = 0; args[i] != NULL; i++)
+			for (i = 0; args[i] != NULL; i++)
 				free(args[i]);
+
+			free(args);
 		}
 
-		free(args);
+		free(command);
+		command = NULL;
 	}
 
-	free(command);
 	return (0);
 }
