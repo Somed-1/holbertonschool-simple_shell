@@ -78,7 +78,6 @@ int main(void)
 			else
 			{
 				wait(NULL);
-				free(args);
 			}
 
 			for (i = 0; args[i] != NULL; i++)
