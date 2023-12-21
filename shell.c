@@ -64,8 +64,14 @@ int main(void)
 			pid = fork();
 			if (pid == 0)
 			{
-				execve(args[0], args, NULL);
-				perror("execve failed");
+				if (execve(args[0], args, NULL) == -1)
+				{
+					for (i = 0; args[i] != NULL; i++)
+					{
+						free(args[i]);
+					}
+					free(command);
+				}
 				exit(1);
 			}
 			else
