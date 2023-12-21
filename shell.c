@@ -70,6 +70,7 @@ int main(void)
 					{
 						free(args[i]);
 					}
+					free(args);
 					free(command);
 				}
 				exit(1);
