@@ -23,7 +23,7 @@ int execute(char **args)
 		if (execvp(args[0], args) == -1)
 		{
 			perror("Execute error");
-			exit(EXIT_FAILURE);
+			exit(2);
 		}
 	}
 	else if (pid < 0)
