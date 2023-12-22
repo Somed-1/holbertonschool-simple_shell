@@ -22,6 +22,7 @@ int main(void)
 		if (status)
 			write(STDOUT_FILENO, "$ ", 2);
 		read = getline(&line, &len, stdin);
+
 		/* if user input is EOF */
 		if (read == -1)
 		{
@@ -34,13 +35,14 @@ int main(void)
 			continue;
 		}
 
-		if (check_exit(line))
+		args = split_line(line);
+
+		if (check_exit(args))
 		{
 			free(line);
 			break;
 		}
 
-		args = split_line(line);
 		/* check if line contains only spaces, tabs, line breaks */
 		if (*args[0] == '\0')
 			continue;
