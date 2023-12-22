@@ -33,6 +33,13 @@ int main(void)
 			free(line);
 			continue;
 		}
+
+		if (check_exit(line))
+		{
+			free(line);
+			break;
+		}
+
 		args = split_line(line);
 		/* check if line contains only spaces, tabs, line breaks */
 		if (*args[0] == '\0')
