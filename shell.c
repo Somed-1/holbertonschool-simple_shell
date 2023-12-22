@@ -3,8 +3,7 @@
 
 /**
  * main - main functtion of program
- * @ac: number of args
- * @av: array of args
+ *
  * Return: Always 0 on success
  */
 int main(void)
