@@ -1,94 +1,46 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <sys/wait.h>
-#include <unistd.h>
+#include "shell.h"
 
-#define MAX_ARGS 64
-#define DELIMS " \t\r\n"
 
-char **parse_line(char *command)
-{
-	char *arg, **args;
-	int i;
-
-	args = malloc(MAX_ARGS * sizeof(char *));
-	if (args == NULL)
-		return(NULL);
-
-	arg = strtok(command, DELIMS);
-	i = 0;
-
-	while (arg != NULL && i < MAX_ARGS - 1)
-	{
-		args[i] = strdup(arg);
-		i++;
-		arg = strtok(NULL, DELIMS);
-	}
-
-	args[i] = NULL;
-	return args;
-}
-
+/**
+ * main - main functtion of program
+ * @ac: number of args
+ * @av: array of args
+ * Return: Always 0 on success
+ */
 int main(void)
 {
-	char *command = NULL;
-	char **args;
-	size_t len = 0;
-	ssize_t read;
-	int i;
-	pid_t pid;
+	char *line = NULL; /* line from user */
+	char **args = NULL; /* splited args from line */
+	size_t len = 0; /* size of line */
+	ssize_t read = 0; /* flag for getline */
+	int status = 1; /* status of loop */
 
-	while (1)
+	/* if status greater than 0 and user input is not EOF(End Of File) */
+	while (status && read != EOF)
 	{
-
-		if (isatty(STDIN_FILENO))
-		{
-			write(STDOUT_FILENO, "#cisfun$ ", 9);
-		}
-
-
-		read = getline(&command, &len, stdin);
-
+		len = 0;
+		status = isatty(STDIN_FILENO);
+		if (status)
+			write(STDOUT_FILENO, "$ ", 2);
+		read = getline(&line, &len, stdin);
+		/* if user input is EOF */
 		if (read == -1)
 		{
-			fflush(stdin);
-			free(command);
+			free(line);
 			break;
 		}
-
-		args = parse_line(command);
-
-		if (args != NULL && args[0] != NULL)
+		if (check_spaces(line))
 		{
-			pid = fork();
-			if (pid == 0)
-			{
-				if (execve(args[0], args, NULL) == -1)
-				{
-					for (i = 0; args[i] != NULL; i++)
-					{
-						free(args[i]);
-					}
-					free(args);
-					free(command);
-				}
-				exit(1);
-			}
-			else
-			{
-				wait(NULL);
-			}
-
-			for (i = 0; args[i] != NULL; i++)
-				free(args[i]);
-
-			free(args);
+			free(line);
+			continue;
 		}
-
-		free(command);
-		command = NULL;
+		args = split_line(line);
+		/* check if line contains only spaces, tabs, line breaks */
+		if (*args[0] == '\0')
+			continue;
+		status = execute(args);
+		free(line);
+		free(args);
 	}
-
 	return (0);
 }
