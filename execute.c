@@ -11,19 +11,13 @@ int execute(char **args)
 	pid_t pid;
 	int status;
 
-	if (access(args[0], F_OK) == -1)
-	{
-		perror("Command not found");
-		return (1);
-	}
-
 	pid = fork();
 	if (pid == 0)
 	{
 		if (execvp(args[0], args) == -1)
 		{
 			perror("Execute error");
-			exit(2);
+			exit(EXIT_FAILURE);
 		}
 	}
 	else if (pid < 0)
