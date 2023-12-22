@@ -43,7 +43,7 @@ int main(void)
 			free(line);
 			free(args);
 
-			return (exit_status);
+			return (2);
 		}
 
 		/* check if line contains only spaces, tabs, line breaks */
