@@ -40,6 +40,7 @@ int main(void)
 		if (check_exit(args))
 		{
 			free(line);
+			free(args);
 			break;
 		}
 
