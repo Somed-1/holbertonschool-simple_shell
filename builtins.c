@@ -2,10 +2,15 @@
 
 #define EXIT_CMD "exit"
 
-int check_exit(char *args)
+int check_exit(char **args)
 {
-	if (strcmp(args, EXIT_CMD) == 0)
-		return (0);
+	int i;
 
-	return (1);
+	for (i = 0; args[i] != NULL; i++)
+	{
+		if (strcmp(args[i], EXIT_CMD) == 0)
+			return (1);
+	}
+
+	return (0);
 }
