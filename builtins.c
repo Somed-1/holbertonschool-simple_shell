@@ -4,9 +4,14 @@
 
 int check_exit(char **args)
 {
-	if (strcmp(args[0], EXIT_CMD) == 0)
+	if (strcmp(args[0], "exit") == 0)
 	{
 		exit_status = 0;
+		return (1);
+	}
+	if (strcmp(args[0], EXIT_CMD) == 0)
+	{
+		exit_status = 2;
 		return (1);
 	}
 
