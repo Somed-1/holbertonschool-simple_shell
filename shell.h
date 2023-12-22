@@ -10,6 +10,8 @@
 #define BUF_SIZE 100
 #define DELIM " \t\n"
 
+int exit_status;
+
 typedef struct builtin_n
 {
 	char *name_builtin;
