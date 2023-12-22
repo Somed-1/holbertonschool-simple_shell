@@ -53,5 +53,5 @@ int main(void)
 		free(line);
 		free(args);
 	}
-	return (exit_status);
+	return (0);
 }
