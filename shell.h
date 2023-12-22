@@ -33,6 +33,6 @@ int b_cd(char **args);
 int b_setenv(char **args);
 int b_unsetenv(char **args);
 int b_env(char **args);
-int check_exit(char *args);
+int check_exit(char **args);
 
 #endif
