@@ -14,6 +14,7 @@ int main(void)
 	ssize_t read = 0; /* flag for getline */
 	int status = 1; /* status of loop */
 
+	exit_status = 0;
 	/* if status greater than 0 and user input is not EOF(End Of File) */
 	while (status && read != EOF)
 	{
@@ -52,5 +53,5 @@ int main(void)
 		free(line);
 		free(args);
 	}
-	return (0);
+	return (exit_status);
 }
