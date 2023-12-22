@@ -34,6 +34,9 @@ int execute(char **args)
 	else
 	{
 		waitpid(-1, &status, 0);
+
+		if (WIFEXITED(status))
+			exit_status = WEXITSTATUS(status);
 		return (1);
 	}
 	return (1);
