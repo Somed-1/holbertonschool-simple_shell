@@ -28,6 +28,7 @@ int execute(char **args)
 	}
 	else if (pid < 0)
 	{
+		free(path);
 		perror("Forking error");
 		return (1);
 	}
@@ -37,6 +38,10 @@ int execute(char **args)
 
 		if (WIFEXITED(status))
 			exit_status = WEXITSTATUS(status);
+
+		if (args[0][0] != '/' && args[0][0] != '.')
+			free(path);
+
 		return (1);
 	}
 	return (1);
