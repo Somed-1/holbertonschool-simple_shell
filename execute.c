@@ -15,9 +15,14 @@ int execute(char **args, char **av)
 	path = check_path(args, av);
 
 	if (strcmp(path, "Fail access") == 0)
-		exit(127);
+	{
+		free(path);
+		return (1);
+	}
 	else
+	{
 		pid = fork();
+	{
 	if (pid == 0)
 	{
 		if (execve(path, args, environ) == -1)
