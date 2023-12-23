@@ -3,7 +3,8 @@
 
 /**
  * main - main functtion of program
- *
+ * @ac: num of args
+ * @av: array of args
  * Return: Always 0 on success
  */
 int main(int ac, char **av)
