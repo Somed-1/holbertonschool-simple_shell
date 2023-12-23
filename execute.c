@@ -14,7 +14,7 @@ int execute(char **args)
 	pid = fork();
 	if (pid == 0)
 	{
-		if (execvp(args[0], args) == -1)
+		if (execve(args[0], args, NULL) == -1)
 		{
 			perror("Execute error");
 			exit(EXIT_FAILURE);
