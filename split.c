@@ -87,3 +87,44 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 	free(ptr1);
 	return (s);
 }
+
+
+char **split_path(char *line)
+{
+	int buffer = BUF_SIZE, newBuffer = 0, position = 0;
+	char **tokens = NULL, *token = NULL;
+	char **backup_tokens = NULL;
+
+	tokens = malloc(buffer * sizeof(char *));
+	if (tokens == NULL)
+	{
+		fprintf(stderr, "memory allocation error\n");
+		exit(EXIT_FAILURE);
+	}
+
+	token = strtok(line, ":");
+	while (token != NULL)
+	{
+		tokens[position] = token;
+		position++;
+
+		if (position >= buffer)
+		{
+			newBuffer = BUF_SIZE * 2;
+			backup_tokens = tokens;
+			tokens = _realloc(tokens, buffer, newBuffer * sizeof(char *));
+			if (tokens == NULL)
+			{
+				free(backup_tokens);
+				free(tokens);
+
+				fprintf(stderr, "memory allocation error\n");
+				exit(EXIT_FAILURE);
+			}
+		}
+		token = strtok(NULL, ":");
+	}
+
+	tokens[position] = NULL;
+	return (tokens);
+}

@@ -10,11 +10,17 @@ int execute(char **args)
 {
 	pid_t pid;
 	int status;
+	char *path;
+
+	path = check_path(args);
+
+	if (strcmp(path, "Fail access") == 0)
+		return (1);
 
 	pid = fork();
 	if (pid == 0)
 	{
-		if (execve(args[0], args, NULL) == -1)
+		if (execve(path, args, environ) == -1)
 		{
 			perror("Execute error");
 			exit(EXIT_FAILURE);

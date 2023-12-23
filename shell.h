@@ -11,6 +11,7 @@
 #define DELIM " \t\n"
 
 int exit_status;
+extern char **environ;
 
 typedef struct builtin_n
 {
@@ -20,12 +21,15 @@ typedef struct builtin_n
 
 /* check.c */
 int check_spaces(char *line);
-int check_access(char **args, char *argv);
+char *check_path(char **args);
 
 /* split.c */
 char **split_line(char *line);
 char **split_path(char *line);
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
+
+/* utils.c */
+char *_strcat(char *str1, char *str2);
 
 /* execute.c */
 int execute(char **args);
