@@ -15,6 +15,7 @@ int main(int ac, char **av)
 	int status = 1; /* status of loop */
 
 	exit_status = 0;
+	(void)ac;
 	/* if status greater than 0 and user input is not EOF(End Of File) */
 	while (status && read != EOF)
 	{
