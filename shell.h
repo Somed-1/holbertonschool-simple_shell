@@ -20,6 +20,7 @@ typedef struct builtin_n
 
 /* check.c */
 int check_spaces(char *line);
+int check_access(char **args, char *argv);
 
 /* split.c */
 char **split_line(char *line);
