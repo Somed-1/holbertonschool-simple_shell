@@ -6,13 +6,13 @@
  *
  * Return: 1 on success
 */
-int execute(char **args)
+int execute(char **args, char **av)
 {
 	pid_t pid;
 	int status;
 	char *path;
 
-	path = check_path(args);
+	path = check_path(args, av);
 
 	if (strcmp(path, "Fail access") == 0)
 		return (1);

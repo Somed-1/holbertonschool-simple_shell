@@ -20,7 +20,7 @@ int check_spaces(char *line)
 	return (flag);
 }
 
-char *check_path(char **args)
+char *check_path(char **args, char **av)
 {
 	char *path, *first;
 	char **path_arr, path_env[1024];
@@ -32,7 +32,8 @@ char *check_path(char **args)
 
 		if ((access(path, F_OK)) == -1)
 		{
-			perror("MAGA KLOUN\n");
+			fprintf(stderr, "%s: %d: %s: No such file or dire\n",
+			av[0], __LINE__, args[0]);
 			return ("Fail access");
 		}
 	}
@@ -63,7 +64,8 @@ char *check_path(char **args)
 		}
 
 			free(path_arr);
-			perror("Execute error");
+			fprintf(stderr, "%s: %d: %s: No such file or dire\n",
+			av[0], __LINE__, args[0]);
 			return ("Fail access");
 	}
 

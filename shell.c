@@ -6,7 +6,7 @@
  *
  * Return: Always 0 on success
  */
-int main(void)
+int main(int ac, char **av)
 {
 	char *line = NULL; /* line from user */
 	char **args = NULL; /* splited args from line */
@@ -49,7 +49,7 @@ int main(void)
 		/* check if line contains only spaces, tabs, line breaks */
 		if (*args[0] == '\0')
 			continue;
-		status = execute(args);
+		status = execute(args, av);
 		free(line);
 		free(args);
 	}

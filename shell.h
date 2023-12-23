@@ -21,7 +21,7 @@ typedef struct builtin_n
 
 /* check.c */
 int check_spaces(char *line);
-char *check_path(char **args);
+char *check_path(char **args, char **av);
 
 /* split.c */
 char **split_line(char *line);
@@ -32,7 +32,7 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 char *_strcat(char *str1, char *str2);
 
 /* execute.c */
-int execute(char **args);
+int execute(char **args, char **av);
 int execute_builtins(void);
 
 /* builtins.c */
