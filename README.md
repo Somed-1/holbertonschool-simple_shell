@@ -34,3 +34,6 @@ Simple Shell supports the following features:
 ## Contributing
 
 If you want to contribute to this project, please first discuss the changes you want to make via issues. ```
+
+## Authors
+there will be our names
