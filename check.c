@@ -19,3 +19,53 @@ int check_spaces(char *line)
 		flag = 0;
 	return (flag);
 }
+
+char *check_path(char **args)
+{
+	char *path, *first;
+	char **path_arr, path_env[1024];
+	int i = 0;
+
+	if (args[0][0] == '/' || args[0][0] == '.')
+	{
+		path = args[0];
+
+		if ((access(path, F_OK)) == -1)
+		{
+			perror("MAGA KLOUN\n");
+			return ("Fail access");
+		}
+	}
+	else
+	{
+		strcpy(path_env, getenv("PATH"));
+
+		path_arr = split_path(path_env);
+
+		while (path_arr[i])
+		{
+			first = _strcat("/", args[0]);
+			path = _strcat(path_arr[i], first);
+
+			if ((access(path, F_OK)) == -1)
+			{
+				free(path);
+				free(first);
+			}
+			else
+			{
+				free(path_arr);
+				free(first);
+
+				return (path);
+			}
+			i++;
+		}
+
+			free(path_arr);
+			perror("Execute error");
+			return ("Fail access");
+	}
+
+	return (path);
+}

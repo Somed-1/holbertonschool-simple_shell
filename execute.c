@@ -10,17 +10,17 @@ int execute(char **args)
 {
 	pid_t pid;
 	int status;
+	char *path;
 
-	if (access(args[0], F_OK) == -1)
-	{
-		perror("Command not found");
+	path = check_path(args);
+
+	if (strcmp(path, "Fail access") == 0)
 		return (1);
-	}
 
 	pid = fork();
 	if (pid == 0)
 	{
-		if (execvp(args[0], args) == -1)
+		if (execve(path, args, environ) == -1)
 		{
 			perror("Execute error");
 			exit(EXIT_FAILURE);
