@@ -53,8 +53,6 @@ int main(int ac, char **av)
 		status = execute(args, av);
 		free(line);
 		free(args);
-		if (status == 127)
-			return (status);
 	}
-	return (0);
+	return (status);
 }
