@@ -16,7 +16,7 @@ int execute(char **args, char **av)
 
 	if (strcmp(path, "Fail access") == 0)
 	{
-		free(path);
+		exit_status = 127;
 		return (1);
 	}
 	else

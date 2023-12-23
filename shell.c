@@ -55,5 +55,5 @@ int main(int ac, char **av)
 		free(line);
 		free(args);
 	}
-	return (status);
+	return (exit_status);
 }
