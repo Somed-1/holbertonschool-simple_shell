@@ -33,7 +33,7 @@ char *check_path(char **args, char **av)
 		if ((access(path, F_OK)) == -1)
 		{
 			fprintf(stderr, "%s: %d: %s: not found\n",
-			av[0], __LINE__, args[0]);
+			av[0], 1, args[0]);
 			return ("Fail access");
 		}
 	}
@@ -65,7 +65,7 @@ char *check_path(char **args, char **av)
 
 			free(path_arr);
 			fprintf(stderr, "%s: %d: %s: not found\n",
-			av[0], __LINE__, args[0]);
+			av[0], 1, args[0]);
 			return ("Fail access");
 	}
 
