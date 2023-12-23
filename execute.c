@@ -22,7 +22,7 @@ int execute(char **args, char **av)
 	else
 	{
 		pid = fork();
-	{
+	}
 	if (pid == 0)
 	{
 		if (execve(path, args, environ) == -1)
