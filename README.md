@@ -1,39 +1,28 @@
-# Simple Shell
+# Basic Shell
 
-## Project Description
+A simplified shell that offers a foundational command-line experience.
+![](https://github.com/VoiceOfDarkness/holbertonschool-simple_shell/blob/main/rz8a1F.gif)
 
-Simple Shell is a project designed to emulate the basic functions of a command line. It's a simple command interpreter that allows the user to execute basic commands and manage processes in the operating system.
+## Key Functionalities
 
-## Installation
+* **User-Friendly Prompt:** Displays a clear prompt and patiently awaits user input.
+* **One-Line Commands:** Accepts straightforward commands, each ending with a newline. No semicolons, pipes, redirections, or other intricate features are necessary.
+* **Single-Line Execution:** Processes commands exclusively within a single line, without passing arguments to programs.
+* **Error Handling:** Gracefully manages scenarios where executables are not found, printing informative error messages and returning the prompt.
+* **End-of-File Mastery:** Seamlessly handles "End of file" conditions (Ctrl+D).
 
-To install Simple Shell, follow these steps:
+## Current Limitations
 
-```bash
-git clone https://github.com/yourusername/simple-shell.git
-cd simple-shell
-make
-```
+* **PATH Independence:** Operates without reliance on the PATH environment variable.
+* **No Built-Ins:** Does not implement built-in commands.
+* **Special Character Avoidance:** Refrains from handling special characters such as ", ', `, \, *, &, and #.
+* **Cursor Stationarity:** Maintains a steady cursor position.
+* **Argument-Free Operation:** Executes commands without the complexity of arguments.
 
 ## Usage
 
-After installation, you can run Simple Shell using the following command:
+To use the Basic Shell, simply type in a command and press Enter. The command line will always end with a newline. For example, to run the `ls` command, you would type the following:
 
-```bash
-./simple_shell
-```
+The Basic Shell will then display a list of files in the current directory.
 
-## Features
-
-Simple Shell supports the following features:
-
-- Running executable files and built-in shell commands
-- Input/Output redirection
-- Job control
-- And much more...
-
-## Contributing
-
-If you want to contribute to this project, please first discuss the changes you want to make via issues. ```
-
-## Authors
-there will be our names
+To exit the Basic Shell, press Ctrl+D.
