@@ -26,3 +26,14 @@ To use the Basic Shell, simply type in a command and press Enter. The command li
 The Basic Shell will then display a list of files in the current directory.
 
 To exit the Basic Shell, press Ctrl+D.
+
+## Authors
+
+**Creators:**
+
+* Abbasov Magomed (Somed-1)
+* Abil Samedov (VoiceOfDarkness)
+
+**Special Credits:**
+
+> You really don't need to know, but here's the link if you're curious: [link](https://www.youtube.com/watch?v=hvL1339luv0)
