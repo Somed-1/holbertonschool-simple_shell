@@ -23,7 +23,7 @@ int check_spaces(char *line)
 char *check_path(char **args, char **av)
 {
 	char *path, *first;
-	char **path_arr, *path_env;
+	char **path_arr, path_env[1024];
 	int i = 0;
 
 	if (args[0][0] == '/' || args[0][0] == '.')
@@ -39,15 +39,7 @@ char *check_path(char **args, char **av)
 	}
 	else
 	{
-		path_env = getenv("PATH");
-
-		if (path_env == NULL)
-		{
-			exit_status = 127;
-			fprintf(stderr, "%s: %d: %s: not found\n",
-			av[0], 1, args[0]);
-			return ("Fail access");
-		}
+		strcpy(path_env, getenv("PATH"));
 
 		path_arr = split_path(path_env);
 
