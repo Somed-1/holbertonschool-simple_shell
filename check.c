@@ -22,7 +22,7 @@ int check_spaces(char *line)
 
 char *check_path(char **args, char **av)
 {
-	char *path, *first;
+	char *path, *first, *temp;
 	char **path_arr, path_env[1024];
 	int i = 0;
 
@@ -39,7 +39,16 @@ char *check_path(char **args, char **av)
 	}
 	else
 	{
-		strcpy(path_env, getenv("PATH"));
+		if ((temp = getenv("PATH")) != NULL)
+		{
+			strcpy(path_env, getenv("PATH"));
+		}
+		else
+		{
+			fprintf(stderr, "%s: %d: %s: not found\n",
+                        av[0], 1, args[0]);
+                        return ("Fail access");
+		}
 
 		path_arr = split_path(path_env);
 
