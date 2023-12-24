@@ -31,8 +31,8 @@ To exit the Basic Shell, press Ctrl+D.
 
 **Creators:**
 
-* Abbasov Magomed (Somed-1)
-* Abil Samedov (VoiceOfDarkness)
+* Abbasov Magomed ([Somed-1](https://github.com/somed-1/))
+* Abil Samedov ([VoiceOfDarkness](https://github.com/VoiceOfDarkness/))
 
 **Special Credits:**
 
