@@ -20,6 +20,14 @@ int check_spaces(char *line)
 	return (flag);
 }
 
+/**
+ * *check_path - checks if the command is in the path
+ *
+ * @args: arguments
+ * @av: arguments
+ *
+ * Return: path
+*/
 char *check_path(char **args, char **av)
 {
 	char *path, *first, *temp;
