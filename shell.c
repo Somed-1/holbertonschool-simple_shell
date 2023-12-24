@@ -30,11 +30,12 @@ int main(int ac, char **av)
 		if (read == -1)
 		{
 			free(line);
-			break;
+			continue;
 		}
 		if (check_spaces(line))
 		{
 			free(line);
+			status = 1;
 			continue;
 		}
 
