@@ -3,7 +3,7 @@
 /**
  * execute - executes a command
  * @args: arguments
- *
+ * @av: array of args
  * Return: 1 on success
 */
 int execute(char **args, char **av)
