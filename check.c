@@ -23,7 +23,7 @@ int check_spaces(char *line)
 char *check_path(char **args, char **av)
 {
 	char *path, *first;
-	char **path_arr, path_env[1024];
+	char **path_arr, *path_env;
 	int i = 0;
 
 	if (args[0][0] == '/' || args[0][0] == '.')
@@ -39,7 +39,7 @@ char *check_path(char **args, char **av)
 	}
 	else
 	{
-		strcpy(path_env, getenv("PATH"));
+		path_env = getenv("PATH");
 
 		if (path_env == NULL)
 		{
