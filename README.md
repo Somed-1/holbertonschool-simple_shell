@@ -1,6 +1,6 @@
 # Basic Shell
 
-A simplified shell that offers a foundational command-line experience.
+**A simplified shell that offers a foundational command-line experience.**
 ![](https://github.com/VoiceOfDarkness/holbertonschool-simple_shell/blob/main/rz8a1F.gif)
 
 ## Key Functionalities
