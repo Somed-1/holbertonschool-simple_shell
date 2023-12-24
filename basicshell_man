@@ -1,0 +1,46 @@
+.\" Manpage for basicshell
+.\" Contact github for more information
+.TH basicshell 1 "December 2023" "Version 1.0" "BasicShell Manual"
+
+.SH NAME
+basicshell \- Simplified Command Line Conclusion
+
+.SH DESCRIPTION
+.B basicshell
+is a simple command line expression that offers a basic command line experience.
+
+.SH FUNCTIONS
+.TP
+\fBUser Interface:\fR Displays a clear user interface and waits patiently for user input.
+\fBOne-line commands:\fR Take simple commands that end with a new line.
+\fBSingle Line Execution:\fR Processes commands exclusively on a single line, without passing arguments to the program.
+\fBError handling:\fR Fire protocol, when no executables are found, informational error messages are printed, and a prompt is returned.
+\fBEnd-of-file handling:\fR Handles end-of-file conditions flawlessly (Ctrl+D).
+
+.SH RESTRICTIONS
+\fBPATH independent:\fR Works without using the PATH environment variable.
+\fBLack of built-in commands:\fR Built-in commands are not implemented.
+\fBAvoid special characters:\fR Avoids processing special characters such as ", ', `, , *, &, and #.
+\fBEnvironmental immobility:\fR The environment remains stable.
+\fBWork without arguments:\fR Execute a command without complex arguments.
+
+.SH USAGE
+To use the Basic Shell, simply type the command and press Enter. The command line always ends with a new line. For example, to run the ls command, you would enter the following:
+
+.IP
+\fBPM\fR
+.PP
+The Basic Shell will then list the files in the current directory.
+
+To exit Basic Shell, press Ctrl+D.
+
+.SH EXAMPLES
+Here are some examples of commands that can be used with the Basic Shell:
+
+.IP
+\fBPM\fR
+.PP
+The ls command lists the files in the current directory. The cd command changes the current directory. The pwd command prints the current working directory. The echo command prints a message to the console.
+
+.SH CONTRIBUTIONS
+The Basic Shell is open source, and tabs are encouraged. See the development guide for more information.
