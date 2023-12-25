@@ -36,8 +36,9 @@ int check_env(char **args)
                 return (1);
         }
 
-	for (i = 0; i < sizeof(args); i++)
+	while(args[i])
 		printf("%s", args[i]);
+		i++
 
 	return (0);
 }
