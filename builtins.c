@@ -29,7 +29,7 @@ int check_exit(char **args)
 */
 int check_env(char **args)
 {
-	int i;
+	int i = 0;
 
 	if (strcmp(args[0], ENV_CMD) == 0)
         {
