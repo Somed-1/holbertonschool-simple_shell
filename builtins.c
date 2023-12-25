@@ -31,7 +31,7 @@ int check_env(char **args)
 {
 	int i = 0;
 
-	if (strcmp(args[0], "env") == 0)
+	if (args[0] && strcmp(args[0], "env") == 0)
 	{
 		while(environ[i])
 		{
