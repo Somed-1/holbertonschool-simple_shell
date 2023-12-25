@@ -53,8 +53,6 @@ int main(int ac, char **av)
 		{
 			free(line);
 			free(args);
-
-			return (exit_status);
 		}
 
 		/* check if line contains only spaces, tabs, line breaks */
