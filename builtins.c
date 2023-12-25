@@ -1,6 +1,7 @@
 #include "shell.h"
 
 #define EXIT_CMD "exit"
+#define ENV_CMD "env"
 
 /**
  * check_exit - checks if the user typed exit
@@ -15,6 +16,28 @@ int check_exit(char **args)
 	{
 		return (1);
 	}
+
+	return (0);
+}
+
+/**
+ * check_env - checks if the command is env
+ *
+ * @args: arguments
+ *
+ * Return: 1 if env, 0 if not
+*/
+int check_env(char **args)
+{
+	unsigned long int i;
+
+	if (strcmp(args[0], ENV_CMD) == 0)
+        {
+                return (1);
+        }
+
+	for (i = 0; i < sizeof(args); i++)
+		printf("%s", args[i]);
 
 	return (0);
 }
