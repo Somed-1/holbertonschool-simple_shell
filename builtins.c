@@ -37,8 +37,10 @@ int check_env(char **args)
         }
 
 	while(args[i])
+	{
 		printf("%s", args[i]);
-		i++
+		i++;
+	}
 
 	return (0);
 }
