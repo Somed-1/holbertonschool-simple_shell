@@ -51,10 +51,6 @@ char *check_path(char **args, char **av)
 		{
 			strcpy(path_env, getenv("PATH"));
 		}
-		else
-		{
-			return (NULL);
-		}
 
 		path_arr = split_path(path_env);
 
