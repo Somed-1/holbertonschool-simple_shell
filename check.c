@@ -51,6 +51,12 @@ char *check_path(char **args, char **av)
 		{
 			strcpy(path_env, getenv("PATH"));
 		}
+		else
+		{
+			fprintf(stderr, "%s: %d: %s: not found\n",
+			av[0], 1, args[0]);
+			return ("Fail access");
+		}
 
 		path_arr = split_path(path_env);
 

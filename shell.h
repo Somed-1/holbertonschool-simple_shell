@@ -37,5 +37,6 @@ int execute_builtins(void);
 
 /* builtins.c */
 int check_exit(char **args);
+int check_env(char **args);
 
 #endif

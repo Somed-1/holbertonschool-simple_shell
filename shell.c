@@ -49,6 +49,14 @@ int main(int ac, char **av)
 			return (exit_status);
 		}
 
+		if (check_env(args))
+		{
+			free(line);
+			free(args);
+
+			return (exit_status);
+		}
+
 		/* check if line contains only spaces, tabs, line breaks */
 		if (*args[0] == '\0')
 			continue;
@@ -58,3 +66,4 @@ int main(int ac, char **av)
 	}
 	return (exit_status);
 }
+
