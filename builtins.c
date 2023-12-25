@@ -40,6 +40,7 @@ int check_env(char **args)
 			printf("%s", environ[i]);
 			i++;
 		}
+	}
 
 	return (0);
 }
