@@ -25,16 +25,14 @@ int check_exit(char **args)
  *
  * @args: arguments
  *
- * Return: 1 if env, 0 if not
+ * Return: enviroment variables, 0 if not
 */
 int check_env(char **args)
 {
-	unsigned long int i;
+	int i;
 
 	if (strcmp(args[0], ENV_CMD) == 0)
         {
-                return (1);
-
 		while(environ[i])
 		{
 			printf("%s", environ[i]);
