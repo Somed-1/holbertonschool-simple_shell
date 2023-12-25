@@ -34,13 +34,12 @@ int check_env(char **args)
 	if (strcmp(args[0], ENV_CMD) == 0)
         {
                 return (1);
-        }
 
-	while(args[i])
-	{
-		printf("%s", args[i]);
-		i++;
-	}
+		while(environ[i])
+		{
+			printf("%s", environ[i]);
+			i++;
+		}
 
 	return (0);
 }
