@@ -21,9 +21,11 @@
 
 ## Usage
 
-To use the Basic Shell, simply type in a command and press Enter. The command line will always end with a newline. For example, to run the `ls` command, you would type the following:
+To use the Basic Shell, simply type in a command and press Enter. The command line will always end with a newline. For example, to run the **`ls`** command, you would type the following:
 
 The Basic Shell will then display a list of files in the current directory.
+
+![](https://www.topbug.net/wp-content/uploads/2016/11/ls-pagination.gif)
 
 To exit the Basic Shell, press Ctrl+D.
 
