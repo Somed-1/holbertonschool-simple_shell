@@ -31,16 +31,15 @@ int check_env(char **args)
 {
 	int i = 0;
 
-	if (strcmp(args[0], ENV_CMD) == 0)
-        {
+	if (args[0] && strcmp(args[0], "env") == 0)
+	{
 		while(environ[i])
 		{
-			printf("%s", environ[i]);
+			printf("%s\n", environ[i]);
 			i++;
 		}
-
-		return (1);
+		return 1;
 	}
 
-	return (0);
+	return 0;
 }
