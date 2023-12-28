@@ -9,7 +9,7 @@
 int execute(char **args, char **av)
 {
 	pid_t pid;
-	int status;
+	int status = 0;
 	char *path = check_path(args, av);
 
 	if (strcmp(path, "Fail access") == 0)
