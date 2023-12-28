@@ -5,42 +5,74 @@
 .SH NAME
 basicshell \- Simplified Command Line Conclusion
 
+.B /bin/[command] [option]
 .SH DESCRIPTION
-.B basicshell
-is a simple command line expression that offers a basic command line experience.
+.LP
+.B hsh\fR is a simple UNIX command language interpreter capable of executing commands interactivly from \fBSTDIN\fR
+or piped from a file
 
-.SH FUNCTIONS
+Invocation
+.P
+HSH can be used interactively or non-interactively. In non-interactive mode (when standard input is not connected to a terminal),
+it reads and executes commands provided to it. In interactive mode (when standard input is connected to a terminal),
+HSH displays the "$ " prompt to signal readiness for command input.
+Additionally, HSH can be invoked with command line arguments, treating the first argument as a file containing commands.
+Each command in the file is executed in sequence before the shell exits.
+
+Environment
+Upon startup, HSH copies the environment from its parent process, which consists of name-value pairs in the format NAME=VALUE.
+
+Command Execution
+.P
+When processing a command, HSH tokenizes it into words using space as a delimiter. The first word is treated as the command,
+and subsequent words are considered arguments. The shell follows these steps:
+1. If the command's first character is not a slash () or dot (.), HSH checks if it is a built-in command.
+If it is, the built-in command is executed.
+2. If the first character is not a slash (), dot (.), or a built-in command, HSH searches directories listed
+in the PATH environmental variable for an executable file with the given name.
+3. If the first character is a slash (), dot (.), or one of the above searches is successful, HSH executes the
+named program with any remaining arguments in a separate execution environment.
+
+Exit Status
+hsh returns the exit status of the last command executed, unless a syntax error occurs, with zero indicating success and non-zer
+indicatingfailure. All builtins return zero on success and one or two on incorrect usage (indicated by a corresponding error message).
+
 .TP
-\fBUser Interface:\fR Displays a clear user interface and waits patiently for user input.
-\fBOne-line commands:\fR Take simple commands that end with a new line.
-\fBSingle Line Execution:\fR Processes commands exclusively on a single line, without passing arguments to the program.
-\fBError handling:\fR Fire protocol, when no executables are found, informational error messages are printed, and a prompt is returned.
-\fBEnd-of-file handling:\fR Handles end-of-file conditions flawlessly (Ctrl+D).
+.B Builtin commands
 
-.SH RESTRICTIONS
-\fBPATH independent:\fR Works without using the PATH environment variable.
-\fBLack of built-in commands:\fR Built-in commands are not implemented.
-\fBAvoid special characters:\fR Avoids processing special characters such as ", ', `, , *, &, and #.
-\fBEnvironmental immobility:\fR The environment remains stable.
-\fBWork without arguments:\fR Execute a command without complex arguments.
+.TP
+.BR env
+list all environment variables
 
-.SH USAGE
-To use the Basic Shell, simply type the command and press Enter. The command line always ends with a new line. For example, to run the ls command, you would enter the following:
-
-.IP
-\fBPM\fR
-.PP
-The Basic Shell will then list the files in the current directory.
-
-To exit Basic Shell, press Ctrl+D.
+.TP
+.BR Exit
+exit the shell
 
 .SH EXAMPLES
-Here are some examples of commands that can be used with the Basic Shell:
+.B Interactive
+       $ ./hsh
+       #(づ￣ 3￣)づ->$ /bin/ls
+       hsh main.c shell.c
+       #(づ￣ 3￣)づ->$
+       #(づ￣ 3￣)づ->$ exit
+       $
 
-.IP
-\fBPM\fR
-.PP
-The ls command lists the files in the current directory. The cd command changes the current directory. The pwd command prints the current working directory. The echo command prints a message to the console.
+
+.B Non Interactive
+       $ echo "/bin/ls" | ./hsh
+       hsh main.c shell.c test_ls_2
+       $
+       $ cat test_ls_2 | ./hsh
+       hsh main.c shell.c test_ls_2
+       hsh main.c shell.c test_ls_2
+       $
+
+-----------------------------------------------------------------------
+.SH AUTHORS
+Abilhasan Samadov \fI<https://github.com/VoiceOfDarkness>\fR
+.P
+Magomed Abbasiv \fI <https://github.com/Somed-1>\fR
+.P
 
 .SH CONTRIBUTIONS
 The Basic Shell is open source, and tabs are encouraged. See the development guide for more information.
