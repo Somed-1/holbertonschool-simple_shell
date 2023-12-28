@@ -17,22 +17,27 @@ int execute(char **args, char **av)
 		exit_status = 127;
 		return (1);
 	}
-
-	pid = fork();
-
+	else
+	{
+		pid = fork();
+	}
 	if (pid == 0)
 	{
 		execute_child(path, args);
 	}
 	else if (pid < 0)
 	{
-		perror("Forking error");
 		free(path);
+		perror("Forking error");
 		return (1);
 	}
 	else
 	{
-		execute_parent(path, args, status);
+		waitpid(-1, &status, 0);
+		if (WIFEXITED(status))
+			exit_status = WEXITSTATUS(status);
+		if (args[0][0] != '/' && args[0][0] != '.')
+			free(path);
 	}
 
 	return (1);
@@ -64,7 +69,7 @@ void execute_child(char *path, char **args)
  *
  * Return: void
  */
-void execute_parent(char *path, char **args, int status)
+void execute_parent(char *path, char **args, int *status)
 {
 	waitpid(-1, &status, 0);
 
