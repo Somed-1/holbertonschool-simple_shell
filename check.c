@@ -57,7 +57,7 @@ char *check_path(char **args, char **av)
 		}
 		else
 		{
-			fprintf(stderr, "%s:	%d:	%s:	not	found\n", av[0], 1, args[0]);
+			fprintf(stderr, "%s: %d: %s: not found\n", av[0], 1, args[0]);
 			return ("Fail access");
 		}
 
