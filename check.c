@@ -39,7 +39,14 @@ char *check_path(char **args, char **av)
 
 	if (args[0][0] == '/' || args[0][0] == '.')
 	{
-		path = find_absolute_path(args, av);
+		path = args[0];
+
+		if ((access(path, F_OK)) == -1)
+		{
+			fprintf(stderr, "%s: %d: %s: not found\n",
+			av[0], 1, args[0]);
+			return ("Fail access");
+		}
 	}
 	else
 	{
@@ -51,31 +58,10 @@ char *check_path(char **args, char **av)
 		else
 		{
 			fprintf(stderr, "%s:	%d:	%s:	not	found\n", av[0], 1, args[0]);
-			return ("Fail	access");
+			return ("Fail access");
 		}
 
 		path = find_relative_path(args, av, path_env);
-	}
-
-	return (path);
-}
-
-/**
- * *find_absolute_path - find the absolute path of a command
- *
- * @args: arguments
- * @av: arguments
- *
- * Return: absolute path
- */
-char *find_absolute_path(char **args, char **av)
-{
-	char *path = args[0];
-
-	if (access(path, F_OK) == -1)
-	{
-		fprintf(stderr, "%s: %d: %s: not found\n", av[0], 1, args[0]);
-		return ("Fail access");
 	}
 
 	return (path);
