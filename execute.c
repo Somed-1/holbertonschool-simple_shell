@@ -59,23 +59,3 @@ void execute_child(char *path, char **args)
 		exit(EXIT_FAILURE);
 	}
 }
-
-/**
- * execute_parent - executes the command in the parent process
- *
- * @path: the path to the command
- * @args: the arguments to the command
- * @status: the status of the child process
- *
- * Return: void
- */
-void execute_parent(char *path, char **args, int *status)
-{
-	waitpid(-1, &status, 0);
-
-	if (WIFEXITED(status))
-		exit_status = WEXITSTATUS(status);
-
-	if (args[0][0] != '/' && args[0][0] != '.')
-		free(path);
-}

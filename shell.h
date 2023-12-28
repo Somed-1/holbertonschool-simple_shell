@@ -31,7 +31,6 @@ char *_strcat(char *str1, char *str2);
 int execute(char **args, char **av);
 int execute_builtins(void);
 void execute_child(char *path, char **args);
-void execute_parent(char *path, char **args, int status);
 
 /* builtins.c */
 int check_exit(char **args);
