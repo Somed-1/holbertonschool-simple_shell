@@ -33,7 +33,7 @@ int check_env(char **args)
 
 	if (args[0] && strcmp(args[0], "env") == 0)
 	{
-		while(environ[i])
+		while (environ[i])
 		{
 			printf("%s\n", environ[i]);
 			i++;
