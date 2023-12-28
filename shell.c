@@ -17,7 +17,6 @@ int main(int ac, char **av)
 
 	exit_status = 0;
 	(void)ac;
-	/* if status greater than 0 and user input is not EOF(End Of File) */
 	while (status && read != EOF)
 	{
 		len = 0;
@@ -25,8 +24,6 @@ int main(int ac, char **av)
 		if (status)
 			write(STDOUT_FILENO, "$ ", 2);
 		read = getline(&line, &len, stdin);
-
-		/* if user input is EOF */
 		if (read == -1)
 		{
 			free(line);
@@ -38,26 +35,13 @@ int main(int ac, char **av)
 			status = 1;
 			continue;
 		}
-
 		args = split_line(line);
-
-		if (check_exit(args))
+		if (check_exit(args) || check_env(args))
 		{
 			free(line);
 			free(args);
-
 			return (exit_status);
 		}
-
-		if (check_env(args))
-		{
-			free(line);
-			free(args);
-
-			return (exit_status);
-		}
-
-		/* check if line contains only spaces, tabs, line breaks */
 		if (*args[0] == '\0')
 			continue;
 		status = execute(args, av);
